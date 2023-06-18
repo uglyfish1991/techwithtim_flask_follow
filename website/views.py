@@ -18,12 +18,13 @@ def home():
 def create_post():
     if request.method == "POST":
         text = request.form.get('text')
+        category = request.form.get('category')
         title = request.form.get('title')
 
         if not text:
             flash('Post cannot be empty', category = 'error')
         else:
-            post = Post(title = title, text=text, author = current_user.id)
+            post = Post(title = title, category = category, text=text, author = current_user.id)
             db.session.add(post)
             db.session.commit()
             flash('Post created', category = 'success')

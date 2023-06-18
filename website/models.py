@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(200),nullable=False)
+    category = db.Column(db.String(200))
     text = db.Column(db.Text, nullable = False)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     #foreign keys - even though it's lowercase, it's referencing the User table / class

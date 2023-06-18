@@ -5,7 +5,7 @@
       {% for post in posts %}
       <div class="card border-dark">
         <div class="card-header d-flex justify-content-between align-items-center">
-          {{post.title}} by : <a href="/posts/{{post.user.username}}"> {{post.user.username}}</a>
+          {{post.title}} by : <a href="/posts/{{post.user.username}}"> {{post.user.username}} </a> in {{post.category}}</a>
           <div>
             <span id="likes-count-{{post.id}}">
             {{ post.likes|length }}</span> 
