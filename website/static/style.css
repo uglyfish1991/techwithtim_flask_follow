@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(240, 223, 238);
+}
+
+.center{
+    text-align: center;
+    padding-top: 5px;
+}
+
+nav{
+    border-width: 0px 0px 6px 0px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+}
+
+#posts > div, .card-body > div{
+    margin-top: 20px;
+}
