@@ -64,3 +64,19 @@ h1,h2{
 .second_nav img{
     width: 100%;
 }
+
+.post_title{
+    background-color: rgb(248, 245, 248);
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 3rem;
+    border-bottom: 2px solid purple;
+}
+
+.post_info{
+    margin: 0 auto;
+    font-size: small;
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+}
