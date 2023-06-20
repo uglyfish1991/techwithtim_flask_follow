@@ -1,3 +1,9 @@
+# /* 
+# // ========================================================================================================
+# //                                   Imports
+# // ======================================================================================================== 
+# */
+
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from .models import Post, User, Comment, Like
@@ -5,17 +11,40 @@ from . import db
 
 views = Blueprint("views", __name__)
 
+# /* 
+# // ========================================================================================================
+# //                                   Views
+# // ======================================================================================================== 
+# */
 
 @views.route("/")
 @views.route("/home")
 @login_required
 def home():
     posts = Post.query.all()
+
+    # Want this cat names to be global? Do I just declare it outside the functions? Try that
+
     cat_names = []
     for post in db.session.query(Post.category).distinct().all():
         cat_names.append(post.category)
-    print(cat_names)
+    # Can't get this working with backref - author is the foreign key. 
+
+    # How would I say search for every user who had at least one post attributed to them
+    # select from User where posts > 1? .distinct? How are posts stored? posts.length >=1?
+
+    # auth_names = []
+    # for post in db.session.query(Post.author).distinct().all():
+    #     auth_names.append(post.author)
+    # print(auth_names)
+
     return render_template("home.html", user=current_user, posts = posts, cat_names = cat_names)
+
+# /* 
+# // ========================================================================================================
+# //                                   Views - Create Posts
+# // ======================================================================================================== 
+# */
 
 @views.route("/create-post", methods=['GET','POST'])
 @login_required
@@ -35,8 +64,12 @@ def create_post():
             return redirect(url_for('views.home'))
 
     return render_template('create_post.html', user=current_user)
+# /* 
+# // ========================================================================================================
+# //                                   Views - Delete Post
+# // ======================================================================================================== 
+# */
 
-# dynamic route
 @views.route("/delete-post/<id>")
 @login_required
 def delete_post(id):
@@ -57,6 +90,12 @@ def delete_post(id):
     
     return redirect(url_for('views.home'))
 
+# /* 
+# // ========================================================================================================
+# //                                   Views - Posts by Username
+# // ======================================================================================================== 
+# */
+
 @views.route("/posts/<username>")
 @login_required
 def posts(username):
@@ -71,6 +110,12 @@ def posts(username):
     posts = user.posts
     return render_template("posts.html", user=current_user, posts = posts, username = username)
 
+# /* 
+# // ========================================================================================================
+# //                                   Views - Posts by category
+# // ======================================================================================================== 
+# */
+
 @views.route("/<category>")
 @login_required
 def cat_search(category):
@@ -78,6 +123,11 @@ def cat_search(category):
     return render_template("cats.html", posts = posts, user=current_user)
 
 
+# /* 
+# // ========================================================================================================
+# //                                   Views - Create Comment
+# // ======================================================================================================== 
+# */
 
 @views.route("/create-comment/<post_id>", methods=['POST'])
 @login_required
@@ -100,6 +150,12 @@ def create_comment(post_id):
 
     return redirect(url_for('views.home'))
 
+# /* 
+# // ========================================================================================================
+# //                                   Views - Delete Comment
+# // ======================================================================================================== 
+# */
+
 @views.route("/delete-comment/<comment_id>")
 @login_required
 def delete_comment(comment_id):
@@ -115,6 +171,12 @@ def delete_comment(comment_id):
         flash("Comment deleted successfully", category = 'success')
 
     return redirect(url_for('views.home'))
+
+# /* 
+# // ========================================================================================================
+# //                                   Views - Like Post
+# // ======================================================================================================== 
+# */
 
 @views.route("/like-post/<post_id>", methods=["POST"])
 @login_required
