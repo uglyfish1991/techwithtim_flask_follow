@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+
 body{
     background-color: rgb(240, 223, 238);
 }
@@ -13,6 +15,10 @@ nav{
     border-color: rgb(0, 0, 0);
 }
 
+h1,h2{
+    font-family: 'Roboto Slab', serif;
+}
+
 #posts > div, .card-body > div{
     margin-top: 20px;
 }
@@ -20,6 +26,8 @@ nav{
 .container{
     display: flex;
     justify-content: space-between;
+    background-color: white;
+    box-shadow: 0px 0px 8px rgb(202, 202, 202);
 }
 
 .post_content{
@@ -27,6 +35,8 @@ nav{
 }
 
 .second_nav{
+    border-left: 1px dotted grey;
+    padding-left: 10px;
     width: 18%;
     background-color: white;
     min-height: 100vh;
@@ -34,14 +44,19 @@ nav{
 
 .second_nav a{
     display: flex;
+    color: rgb(61, 5, 78);
+    text-transform: capitalize;
     height: 50px; 
+    padding-left: 5px;
     align-items: center;
     background-color: rgb(248, 245, 248);
     margin: 10px 0px;
+    font-family: 'Roboto Slab', serif;
     text-decoration: none;
 }
 
 .second_nav a:hover{
     border: 0px;
+    text-decoration: underline;
     border-right: pink solid 10px;
 }
