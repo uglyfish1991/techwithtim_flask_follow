@@ -16,3 +16,19 @@ nav{
 #posts > div, .card-body > div{
     margin-top: 20px;
 }
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post_content{
+    width: 80%;
+}
+
+.second_nav{
+    width: 18%;
+    background-color: white;
+    min-height: 100vh;
+}
