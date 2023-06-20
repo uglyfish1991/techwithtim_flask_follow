@@ -31,7 +31,7 @@ def home():
     # Can't get this working with backref - author is the foreign key. 
 
     # How would I say search for every user who had at least one post attributed to them
-    # select from User where posts > 1? .distinct? How are posts stored? posts.length >=1?
+    # select from User where posts > 1? .distinct? How are posts stored? posts.length >=1? Try that
 
     # auth_names = []
     # for post in db.session.query(Post.author).distinct().all():

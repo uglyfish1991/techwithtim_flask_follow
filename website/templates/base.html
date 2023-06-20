@@ -47,7 +47,7 @@
       <div class="container">
         <div class="post_content">{% block content %}{% endblock %}</div>
         <div class="second_nav">
-          this is where links will go for authors and cats
+          <img src="{{url_for('static', filename='images/logo.png')}}" />
           <h2>Categories</h2>
           {% for name in cat_names %} 
           <a href="/{{name}}">{{ name }}</a>

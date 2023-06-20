@@ -60,3 +60,7 @@ h1,h2{
     text-decoration: underline;
     border-right: pink solid 10px;
 }
+
+.second_nav img{
+    width: 100%;
+}
