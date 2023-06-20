@@ -67,6 +67,14 @@ def posts(username):
     posts = user.posts
     return render_template("posts.html", user=current_user, posts = posts, username = username)
 
+@views.route("/<category>")
+@login_required
+def cat_search(category):
+    posts = Post.query.filter_by(category = category)
+    return render_template("cats.html", posts = posts, user=current_user)
+
+
+
 @views.route("/create-comment/<post_id>", methods=['POST'])
 @login_required
 def create_comment(post_id):

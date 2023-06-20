@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title %} Posts in {{category}} {% endblock %} {% block content
+    %}
+    <h1 class="center">Posts</h1>
+
+    {% for post in posts %}
+        {{post.title}}
+        {% endfor %}
+
+{% endblock %}
